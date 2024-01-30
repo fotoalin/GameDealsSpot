@@ -1,0 +1,50 @@
+{% extends 'deals/base.html' %}
+
+{% block title %}Deals{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-4">Welcome to GameDealsSpot</h1>
+    <p class="text-center fs-4">Discover the Best Video Game Deals Across All Platforms</p>
+
+    <div class="row mt-5">
+        <div class="col-md-6 mb-4">
+            <h2>Find Unbeatable Discounts</h2>
+            <p>Dive into a world of exceptional video game deals and discounts. GameDealsSpot brings you the latest offers from all your favorite digital game stores in one place. Whether you're a PC enthusiast, a console devotee, or a mobile gamer, our curated deals ensure you play more for less.</p>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <h2>Search Less, Play More</h2>
+            <p>Our intuitive search and powerful filters make finding great deals a breeze. Looking for a specific title or just browsing for inspiration? GameDealsSpot delivers personalized recommendations to suit your gaming tastes.</p>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <h2>Real-Time Price Tracking</h2>
+            <p>Never miss a deal with GameDealsSpot's real-time price tracking. Get instant notifications on price drops and limited-time offers for games on your wishlist. Stay ahead of the game and ensure you're always getting the best value.</p>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <h2>Community-Rated Deals</h2>
+            <p>Trust the wisdom of the gaming community with user ratings and reviews for deals and stores. GameDealsSpot empowers you with insights from fellow gamers, helping you make informed choices about where and when to buy.</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-5" hx-boost="false">
+        <h3>Ready to Score Epic Game Deals?</h3>
+        <p>Start your adventure with GameDealsSpot today. Sign up for free and join a community of gamers who know the value of a great deal.</p>
+        <button 
+                class="btn btn-primary me-2"
+                hx-get="{% url 'deals:deals' %}" 
+                hx-target="body"
+                hx-swap="innerHTML"
+                hx-push-url="true"
+                hx-indicator="#loader" 
+            >Explore Deals Now
+        </button>
+        {% comment %} <a href="{% url 'deals:deals' %}" class="btn btn-primary me-2">Explore Deals Now</a> {% endcomment %}
+        {% comment %} <a href="#" class="btn btn-outline-secondary">Learn More</a> {% endcomment %}
+    </div>
+</div>
+
+{% endblock content %}
+

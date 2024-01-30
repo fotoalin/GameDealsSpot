@@ -1,0 +1,27 @@
+{% block title %}Deals{% endblock %}
+
+{% block content %}
+
+    {% if deals|length == 0 %}
+        <p>No deals found</p>
+    {% else %}
+        <p>Found {{deals|length}} deals</p>
+    {% endif %}
+
+
+    <form action="/deals/search" method="GET" hx-boost="true" class="d-flex justify-content-center col-6 mx-auto my-5">
+        <div class="input-group ">
+            {% csrf_token %}
+            <input id="search-term" type="text" class="form-control" name="search" placeholder="Search for a deal" aria-label="Search for a deal" aria-describedby="button-addon2" hx-post="{% url 'deals:search' %}" hx-trigger="keyup changed delay:500ms" hx-swap="outerHTML" hx-target="#deals-list" hx-push-url="true">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2" hx-post="{% url 'deals:search' %}" hx-trigger="click" hx-swap="outerHTML" hx-target="#deals-list" hx-include="#search-term" hx-push-url="true">Search</button>
+        </div>
+    </form>
+
+    <div class="row">
+        {% include 'deals/snippets/deal.html' with deals=deals %}
+    </div>
+
+
+
+
+{% endblock content %}
